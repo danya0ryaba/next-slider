@@ -12,7 +12,7 @@ export const Header: React.FC = () => {
                 </svg>
                 <h4 className='uppercase pl-4'>STEMPS</h4>
             </Link>
-            <nav>
+            <nav className='hidden tablet:flex'>
                 <ul className="flex gap-6">
                     <Link href="/">О школе</Link>
                     <Link href="/">Курсы</Link>

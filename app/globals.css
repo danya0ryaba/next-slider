@@ -22,14 +22,18 @@ body {
 
 @layer components {
   .card {
-    @apply mt-auto text-2xl leading-9;
+    @apply mt-0 text-[24px] leading-7 tablet:ml-0 tablet:text-[32px] tablet:mt-auto;
   }
 
   .title {
-    @apply mb-10 relative flex gap-[386px] max-w-[1728px] py-3 items-center text-[40px] leading-[44px] text-violet after:w-[100%] after:h-[1px] after:bg-darkWhite after:absolute after:left-[50%] after:-translate-x-[50%] after:bottom-0;
+    @apply mb-10 relative flex gap-2 max-w-[1728px] py-3 text-[26px] leading-[44px] text-violet;
+    @apply after:w-[100%] after:h-[1px] after:bg-darkWhite after:absolute after:left-[50%] after:-translate-x-[50%] after:bottom-[50%] after:-translate-y-[-50%];
+
+    @apply flex-col lg:flex-row lg:gap-[386px] lg:items-center lg:text-[40px];
+    @apply lg:after:bottom-0;
   }
 
   .cardDescMobile {
-    @apply text-sm leading-5;
+    @apply text-sm leading-5 mt-auto;
   }
 }
