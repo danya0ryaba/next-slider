@@ -2,20 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+@font-face {
+  font-family: 'PPNeueMontreal';
+  src:
+    url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "PPNeueMontreal", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #151515;
+  overflow: hidden;
+}
+
+@layer components {
+  .card {
+    @apply mt-auto text-2xl leading-9;
+  }
+
+  .title {
+    @apply mb-10 relative flex gap-[386px] max-w-[1728px] py-3 items-center text-[40px] leading-[44px] text-violet after:w-[100%] after:h-[1px] after:bg-darkWhite after:absolute after:left-[50%] after:-translate-x-[50%] after:bottom-0;
+  }
+
+  .cardDescMobile {
+    @apply text-sm leading-5;
+  }
 }
