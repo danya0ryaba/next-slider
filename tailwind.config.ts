@@ -13,6 +13,7 @@ export default {
       },
       colors: {
         black: '#151515',
+        customBlack: '#1C1C1C',
         darkWhite: '#E1E1E1',
         gray: '#CCCCCC',
         background: '#F0F0F0',

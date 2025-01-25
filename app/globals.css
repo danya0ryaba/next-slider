@@ -22,7 +22,7 @@ body {
 
 @layer components {
   .card {
-    @apply mt-0 text-[24px] leading-7 tablet:ml-0 tablet:text-[32px] tablet:mt-auto;
+    @apply mt-0 text-[24px] leading-7 tablet:text-[32px] tablet:mt-auto;
   }
 
   .title {
@@ -36,4 +36,14 @@ body {
   .cardDescMobile {
     @apply text-sm leading-5 mt-auto;
   }
+
+  .dot {
+    @apply w-2 h-2 bg-gray rounded-full cursor-pointer;
+  }
+
+  .active {
+    @apply relative w-[40px] h-2 bg-gray rounded-[10px];
+    @apply after:w-5 after:h-2 after:bg-customBlack after:rounded-[10px] after:absolute after:top-0 after:left-0;
+  }
+
 }
