@@ -14,7 +14,7 @@ export const Card: React.FC<CardType> = ({
 
                 <div className='flex flex-row content-start items-stretch gap-6 flex-grow h-full tablet:flex-col tablet:gap-0 tablet:items-start'>
                     <div className='w-[60px] h-[60px] tablet:w-[80px] tablet:h-[80px]'>
-                        <img src={img} alt="image slider" />
+                        <img src={img} alt={title} />
                     </div>
                     <h4 className="card">{title}</h4>
                 </div>

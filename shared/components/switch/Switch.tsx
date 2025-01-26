@@ -1,5 +1,3 @@
-'use client';
-
 import { CardType } from '@/public/data/data';
 import React from 'react'
 interface SwitchProps {
