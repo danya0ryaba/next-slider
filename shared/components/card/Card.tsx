@@ -9,7 +9,7 @@ export const Card: React.FC<CardType> = ({
     description
 }) => {
     return (
-        <li className="flex-none cursor-grab" >
+        <li className="flex-none cursor-grab" id={String(id)}>
             <article className="flex flex-col rounded-[8px] bg-darkWhite p-4 w-[358px] h-[212px] lg:w-[412px] lg:h-[256px] lg:p-6">
 
                 <div className='flex flex-row content-start items-stretch gap-6 flex-grow h-full tablet:flex-col tablet:gap-0 tablet:items-start'>

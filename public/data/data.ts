@@ -40,6 +40,6 @@ export const data: CardType[] = [
         id: 6,
         img: "/images/cards/6.svg",
         title: "Рекомендация по базе STEMPS Career",
-        description: "Поможем встретиться соискателю и работодателю.",
+        description: "Поможем встретиться соискателю и работодателю.",
     },
 ]

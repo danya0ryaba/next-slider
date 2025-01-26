@@ -15,9 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="mx-auto max-w-[1728px] px-4 bg-background">
-        <Header />
-        <Title>Наши услуги</Title>
+      <body >
+        <div className="mx-auto max-w-[1728px] px-4">
+          <Header />
+          <Title>Наши услуги</Title>
+        </div>
         {children}
       </body>
     </html>
