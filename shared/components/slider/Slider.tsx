@@ -1,210 +1,59 @@
 'use client'
 
-// import React from 'react'
-// import { Switch } from '../switch/Switch'
-// import { data } from '@/public/data/data'
-// import { Card } from '../card/Card'
-// import { useResize } from '@/shared/hook/useResize'
-
-// export const Slider: React.FC = () => {
-
-//     console.log(useResize())
-
-//     const [offsexX, setOffsexX] = React.useState(0)
-
-//     React.useEffect(() => {
-
-//         const hendleOffsetX = () => {
-//             // const width = useResize()
-//             const offset = 412 //width / 2 - 60
-//             setOffsexX(prev => prev + offset)
-//         }
-
-//         const intervalId = setInterval(hendleOffsetX, 1000)
-
-//         return () => clearInterval(intervalId)
-
-//     }, [])
-
-
-//     return (
-//         <div className="w-full mx-auto overflow-hidden max-w-[100%] pl-4">
-//             <Switch cards={data} />
-//             <ul className="flex gap-4" style={{ transform: `translateX(-${offsexX}px)` }}>
-//                 {data.map((item) => (<Card key={item.id} {...item} />))}
-//             </ul>
-//         </div>
-//     )
-// }
-
-
-// import React from 'react';
-// import { Switch } from '../switch/Switch';
-// import { data } from '@/public/data/data';
-// import { Card } from '../card/Card';
-// import { useResize } from '@/shared/hook/useResize';
-
-// export const Slider: React.FC = () => {
-//     const [offsexX, setOffsexX] = React.useState(0);
-//     const itemWidth = 412; // Ширина одного элемента слайдера
-//     const totalWidth = itemWidth * data.length; // Общая ширина всех элементов
-
-//     React.useEffect(() => {
-//         const handleOffsetX = () => {
-//             setOffsexX(prev => prev - itemWidth); // Сдвиг влево
-//         };
-
-//         const intervalId = setInterval(() => {
-//             handleOffsetX();
-//             // Если сдвинутый элемент вышел за пределы, сбросим его в начало
-//             if (offsexX <= -totalWidth) {
-//                 setOffsexX(0);
-//             }
-//         }, 3000);
-
-//         return () => clearInterval(intervalId);
-//     }, [offsexX, totalWidth]);
-
-//     return (
-//         <div className="w-full mx-auto overflow-hidden max-w-[100%] pl-4">
-//             <Switch cards={data} />
-//             <ul className="flex gap-4 transition-transform duration-1 ease" style={{ transform: `translateX(${offsexX}px)` }}>
-//                 {data.map((item) => (<Card key={item.id} {...item} />))}
-//                 {data.map((item) => (<Card key={`${item.id}-copy`} {...item} />))} {/* Дублируем элементы */}
-//             </ul>
-//         </div>
-//     );
-// }
-
-
-
-// import React, { useEffect, useRef, useState } from 'react';
-// import { Switch } from '../switch/Switch';
-// import { data } from '@/public/data/data';
-// import { Card } from '../card/Card';
-
-// export const Slider: React.FC = () => {
-//     const [offsetX, setOffsetX] = useState(0);
-//     const itemWidth = 412 / 2;
-//     const totalWidth = itemWidth * data.length;
-//     const requestRef = useRef(0);
-
-//     const animate = () => {
-//         setOffsetX(prev => {
-//             const newOffset = prev - itemWidth;
-//             return newOffset <= -totalWidth ? 0 : newOffset; // Сброс в начало
-//         });
-//         requestRef.current = requestAnimationFrame(animate);
-//     };
-
-//     useEffect(() => {
-//         requestRef.current = requestAnimationFrame(animate); // Запуск анимации
-
-//         return () => {
-//             cancelAnimationFrame(requestRef.current); // Очистка при размонтировании
-//         };
-//     }, []);
-
-//     return (
-//         <div className="w-full mx-auto overflow-hidden max-w-[100%] pl-4">
-//             <Switch cards={data} />
-//             <ul className="flex gap-4 transition-transform duration-500 ease-in-out" style={{ transform: `translateX(${offsetX}px)` }}>
-//                 {data.map(item => (<Card key={item.id} {...item} />))}
-//                 {data.map(item => (<Card key={`${item.id}-copy`} {...item} />))} {/* Дублируем элементы для бесконечного эффекта */}
-//             </ul>
-//         </div>
-//     );
-// };
-
-
-// import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-// import { Switch } from '../switch/Switch';
-// import { data } from '@/public/data/data';
-// import { Card } from '../card/Card';
-
-// export const Slider: React.FC = () => {
-//     const [offsetX, setOffsetX] = useState(0);
-//     const itemWidth = 412 / 1.2; // Ширина одного элемента слайдера
-//     const totalWidth = itemWidth * data.length; // Общая ширина всех элементов
-//     const requestRef = useRef(0); // Ссылка на requestAnimationFrame
-//     const lastUpdateTime = useRef(Date.now()); // Время последнего обновления
-//     const delay = 2000; // Задержка в миллисекундах между обновлениями
-
-//     const animate = () => {
-//         const currentTime = Date.now();
-//         const elapsedTime = currentTime - lastUpdateTime.current;
-
-//         if (elapsedTime > delay) {
-//             setOffsetX(prev => {
-//                 const newOffset = prev - itemWidth;
-//                 return newOffset <= -totalWidth ? 0 : newOffset; // Сброс в начало
-//             });
-//             lastUpdateTime.current = currentTime; // Обновляем время последнего обновления
-//         }
-
-//         requestRef.current = requestAnimationFrame(animate);
-//     };
-
-//     useLayoutEffect(() => {
-//         requestRef.current = requestAnimationFrame(animate); // Запуск анимации
-
-//         return () => {
-//             cancelAnimationFrame(requestRef.current); // Очистка при размонтировании
-//         };
-//     }, []);
-
-//     return (
-//         <div className="w-full mx-auto overflow-hidden max-w-[100%] pl-4">
-//             <Switch cards={data} />
-//             <ul className="flex gap-4 transition-transform duration-500 ease-in-out" style={{ transform: `translateX(${offsetX}px)` }}>
-//                 {data.map(item => (<Card key={item.id} {...item} />))}
-//                 {data.map(item => (<Card key={`${item.id}-copy`} {...item} />))}
-//             </ul>
-//         </div>
-//     );
-// };
-
-
-import React, { useEffect, useRef, useState } from 'react';
+import { Card } from '../card/Card';
 import { Switch } from '../switch/Switch';
 import { data } from '@/public/data/data';
-import { Card } from '../card/Card';
+import { useResize } from '@/shared/hook/useResize';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 
 export const Slider: React.FC = () => {
 
+    const width = useResize();
+    const itemWidth = width < 900 ? 358 + 16 : 412; // ширина одного элемента слайдера
+
     const [offsetX, setOffsetX] = useState(0);
-    const itemWidth = 412; // Ширина одного элемента слайдера
-    const totalWidth = itemWidth * data.length; // Общая ширина всех элементов
-    const requestRef = useRef(0); // Ссылка на requestAnimationFrame
-    const lastUpdateTime = useRef(Date.now()); // Время последнего обновления
-    const delay = 1000 / 60; // Задержка для 60 FPS
+    const totalWidth = itemWidth * data.length; // общая ширина всех элементов
+    const requestRef = useRef(0); // ссылка на requestAnimationFrame
+    const lastUpdateTime = useRef(Date.now()); // время последнего обновления
+    const delay = 1000 / 60; // задержка для 60 FPS
 
     const animate = () => {
         const currentTime = Date.now();
         const elapsedTime = currentTime - lastUpdateTime.current;
         if (elapsedTime > delay) {
             setOffsetX(prev => {
-                const newOffset = prev - 1; // Сдвигаем на 1 пиксель
-                // Если достигли конца, сбрасываем в начало
+                const newOffset = prev - 1;
                 return newOffset <= -totalWidth ? 0 : newOffset;
             });
-            lastUpdateTime.current = currentTime; // Обновляем время последнего обновления
+            lastUpdateTime.current = currentTime;
         }
         requestRef.current = requestAnimationFrame(animate);
     };
 
-    useEffect(() => {
-        requestRef.current = requestAnimationFrame(animate); // Запуск анимации
+    useLayoutEffect(() => {
+        if (width < 900) return;
+        requestRef.current = requestAnimationFrame(animate);
         return () => {
-            cancelAnimationFrame(requestRef.current); // Очистка при размонтировании
+            cancelAnimationFrame(requestRef.current);
         };
-    }, []);
+    }, [width]);
+
+    // ДЛЯ МОБИЛЬНОГО ВИДА (Switch)
+    const [activeDot, setActiveDot] = React.useState(1);
+
+    const handleChangeSlider = (id: number) => {
+        const offsetX = itemWidth * (id - 1);
+        setActiveDot(id);
+        setOffsetX(-offsetX);
+    };
 
     return (
         <div className="w-full mx-auto overflow-hidden max-w-[100%] pl-4">
-            <Switch cards={data} />
-            <ul className="flex gap-4 transition-transform duration-500 ease-in-out" style={{ transform: `translateX(${offsetX}px)` }}>
-                {/* Дублируем элементы для бесконечного эффекта */}
+            <Switch cards={data} activeDot={activeDot} changeSlider={handleChangeSlider} />
+            <ul
+                style={{ transform: `translateX(${offsetX}px)` }}
+                className="flex gap-4 transition-transform duration-500 ease-in-out"
+            >
                 {data.map(item => (<Card key={item.id} {...item} />))}
                 {data.map(item => (<Card key={`${item.id}-copy`} {...item} />))}
             </ul>

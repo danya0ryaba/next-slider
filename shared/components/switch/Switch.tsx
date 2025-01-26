@@ -4,14 +4,24 @@ import { CardType } from '@/public/data/data';
 import React from 'react'
 interface SwitchProps {
     cards: CardType[];
+    activeDot: number;
+    changeSlider: (id: number) => void
 }
 export const Switch: React.FC<SwitchProps> = ({
-    cards
+    cards,
+    activeDot,
+    changeSlider,
 }) => {
+
     return (
         <ul className='gap-2 mb-6 flex tablet:hidden'>
-            <li className='dot active'></li>
-            {cards.map((item) => (<li onClick={() => console.log(item.id)} key={item.id} className='dot'></li>))}
+            {
+                cards.map((item) => (<li
+                    key={item.id}
+                    onClick={() => changeSlider(item.id)}
+                    className={activeDot === item.id ? 'dot active' : 'dot'}
+                />))
+            }
         </ul>
     )
 }
