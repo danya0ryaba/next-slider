@@ -1,7 +1,4 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import { Header } from "@/shared/components/header/Header";
-import { Title } from "@/shared/components/title/Title";
 
 export const metadata: Metadata = {
     title: "Slider",
