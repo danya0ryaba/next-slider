@@ -1,6 +1,5 @@
 import React from 'react'
-
-import { CardType } from '@/public/data/data'
+import { CardType } from '@/app/api/slider/data'
 
 export const Card: React.FC<CardType> = ({
     id,
