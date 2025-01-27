@@ -1,5 +1,5 @@
+import { CardType } from '@/public/data/data';
 import React from 'react'
-import { CardType } from '@/app/api/slider/data';
 
 interface SwitchProps {
     cards: CardType[];
